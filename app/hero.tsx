@@ -3,25 +3,37 @@ import { Button } from "@radix-ui/themes";
 const HeroSection = () => {
   return (
     <section
-      className="w-full flex h-4/5 relative"
+      className="w-full  flex justify-center items-center layout-padding relative"
       style={{
-        backgroundImage: 'url("/logo.png")',
+        backgroundImage: `
+  linear-gradient(to bottom,
+    rgba(0,0,0,0.2),
+    rgba(14,165,233,0.25),   /* sky-500 */
+    rgba(21,94,117,0.35),    /* sky-800 */
+    rgba(132,204,22,0.25),   /* lime-500 */
+    rgba(0,0,0,0.7)
+  ),
+  url("/herobg.jpg")
+`,
+
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
+        opacity: ".9",
       }}
     >
-      <div className="absolute inset-0 z-10 bg-white/40"></div>
+      <div className="absolute inset-0 z-10 "></div>
 
-      <div className="w-1/2 z-20 flex items-center justify-center">
-        <div className="max-w-2xl text-xl w-full flex flex-col gap-8">
-          <div className="w-2/5 rounded-full bg-blue-100 flex justify-center items-center">
-            <p className="text-lg text-blue-500">Accepting new patients</p>
+      <div className=" flex min-h-[calc(100vh-12rem)] items-center z-10 text-center md:text-start md:justify-start w-full justify-center">
+        <div className=" w-full md:max-w-2xl text-xl gap-y-10 md:gap-y-10  items-center md:items-start flex flex-col gap-8">
+          <div className=" rounded-full bg-blue-100">
+            <p className="text-sm  md:text-lg px-4 text-blue-500  ">
+              Accepting new patients
+            </p>
           </div>
-          <h1 className="text-5xl font-bold">
-            Riddi Siddi Medical & Dignostics
-          </h1>
-          <p>
+
+          <h1 className="heading-xl">Riddi Siddi Medical & Dignostics</h1>
+          <p className=" body-text ">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
             magnam magni beatae! Lorem ipsum dolor sit amet.
           </p>
@@ -37,7 +49,7 @@ const HeroSection = () => {
           </Button>
         </div>
       </div>
-      <div className="w-1/2 py-20"></div>
+      {/* <div className="w-1/2 py-20"></div> */}
     </section>
   );
 };

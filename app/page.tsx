@@ -3,7 +3,7 @@ import ServiceSection from "./services";
 
 const HomePage = () => {
   return (
-    <main className="flex flex-col gap-12 h-screen w-full">
+    <main className="w-full h-full">
       <HeroSection />
       <ServiceSection />
     </main>
