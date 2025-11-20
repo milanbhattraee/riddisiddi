@@ -5,34 +5,34 @@ const ServiceCards = [
   {
     title: "Vaccinations",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
-    icon: <FaSyringe className="text-blue-900 transition-all duration-300 ease-in-out group-hover:text-white text-xl" />,
+    icon: <FaSyringe className=" transition-all duration-300 ease-in-out  text-xl" />,
   },
   {
     title: "Family care",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
-    icon: <FaHands className="text-blue-900 transition-all duration-300 ease-in-out group-hover:text-white text-xl" />,
+    icon: <FaHands className=" transition-all duration-300 ease-in-out  text-xl" />,
   },
   {
     title: "Vaccinations",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
-    icon: <MdElderlyWoman className="text-blue-900 transition-all duration-300 ease-in-out group-hover:text-white text-xl" />,
+    icon: <MdElderlyWoman className=" transition-all duration-300 ease-in-out  text-xl" />,
   },
 ];
 
 const ServiceSection = () => {
   return (
-    <section className="w-full min-h-screen bg-main layout-padding flex justify-center items-center flex-col gap-20">
-      <h1 className="text-4xl font-bold">Our Services</h1>
+    <section className="w-full bg-white layout-padding flex  items-center flex-col gap-20">
+      <h1 className="heading-xl font-bold">Our Services</h1>
 
       <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3 items-center justify-center gap-10 w-full">
         {ServiceCards.map((card, index) => {
-          const isBlue = index === 2;
+          
 
           return (
             <div
               key={index}
-              className={`group relative transition-all duration-300 ease-in-out  max-w-80 p-8 rounded-2xl shadow-lg text-center 
-        hover:bg-blue-600 hover:text-white  bg-blue-50 text-gray-800"`}
+              className={`group relative transition-all borde duration-300 ease-in-out  max-w-80 p-8 rounded-2xl shadow-lg text-center 
+         ${index % 2 !== 0 ? "bg-blue-900 text-white ": "bg-gray-50  text-blue-900 border border-blue-50 "}   text-gray-800"`}
             >
               <div
                 className="absolute -top-8 left-1/2 -translate-x-1/2
@@ -41,7 +41,7 @@ const ServiceSection = () => {
               >
                 <div
                   className={`flex items-center justify-center 
-                w-16 h-16 rounded-full group-hover:bg-blue-600 transition-all duration-300 ease-in-out group-hover:text-blue-400 bg-blue-200 text-blue-400  }`}
+                w-16 h-16 rounded-full ${index % 2 !== 0 ? "bg-blue-900 text-white ": "bg-blue-200  text-blue-900"} transition-all duration-300 ease-in-out   }`}
                 >
                   {card.icon}
                 </div>

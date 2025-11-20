@@ -5,7 +5,7 @@
   /* Layout padding (responsive) */
   .layout-padding {
     @apply px-4 sm:px-6 md:px-10 lg:px-20 xl:px-56;
-    @apply py-6 sm:py-8 md:py-16 lg:py-24 xl:py-28;
+    @apply py-6 sm:py-6 md:py-12 lg:py-18 xl:py-24;
   }
   
   /* X-axis layout padding */
@@ -21,7 +21,7 @@
 
   /* Reusable background themes */
   .bg-main {
-    @apply bg-gray-300 ;
+    @apply bg-gray-50 ;
   }
 
   .bg-accent {

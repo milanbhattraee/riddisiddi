@@ -26,8 +26,8 @@ const HeroSection = () => {
 
       <div className=" flex min-h-[calc(100vh-12rem)] items-center z-10 text-center md:text-start md:justify-start w-full justify-center">
         <div className=" w-full md:max-w-2xl text-xl gap-y-10 md:gap-y-10  items-center md:items-start flex flex-col gap-8">
-          <div className=" rounded-full bg-blue-100">
-            <p className="text-sm  md:text-lg px-4 text-blue-500  ">
+          <div className=" rounded-full bg-white">
+            <p className="text-sm  md:text-lg px-4 text-blue-800  ">
               Accepting new patients
             </p>
           </div>
@@ -49,7 +49,6 @@ const HeroSection = () => {
           </Button>
         </div>
       </div>
-      {/* <div className="w-1/2 py-20"></div> */}
     </section>
   );
 };

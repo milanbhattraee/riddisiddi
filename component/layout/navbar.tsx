@@ -61,11 +61,11 @@ const Navbar = () => {
 
       {/* nav links  */}
       <div className="w-full hidden md:flex gap-x-4 justify-between items-center ">
-        <div className="flex justify-center items-center w-full">
+        <div className="flex justify-center  items-center w-full">
 
         {Navlinks.map((item) => (
           <Link
-            className="px-2  body-text text-center "
+            className="px-2 lg:px-5  body-text text-center "
             key={item.title}
             href={item.src}
           >
@@ -74,7 +74,7 @@ const Navbar = () => {
         ))}
         </div>
       
-          <Button >Book an appointment</Button>
+          <Button style={{padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer"}}>Book an appointment</Button>
         
       </div>
 
