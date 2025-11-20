@@ -83,6 +83,7 @@ const Navbar = () => {
         <div className="md:hidden w-full md:flex-row md:justify-center gap-y-6 items-center flex flex-col">
           {Navlinks.map((item) => (
             <Link
+              onClick={()  => setShowLinks(false)}
               className="py-2 font-semibold w-full  text-center "
               key={item.title}
               href={item.src}
@@ -91,7 +92,7 @@ const Navbar = () => {
             </Link>
           ))}
           <div className="flex items-center w-full  justify-center">
-            <Button style={{ width: "100%" }}>Book an appointment</Button>
+            <Button style={{ width: "100%",padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
           </div>
         </div>
       )}
