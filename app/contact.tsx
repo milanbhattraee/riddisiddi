@@ -24,8 +24,8 @@ const ContactCards =  [
 const Contact = () =>{
     return (
 
-<section className="w-full bg-white layout-padding flex  items-center flex-col gap-20">
-      <h1 className="heading-xl font-bold">Our Services</h1>
+<section id="contact" className="w-full bg-white layout-padding flex  items-center flex-col gap-20">
+      <h1 className="heading-xl font-bold">Contact Us</h1>
 
       <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3  items-center justify-center gap-10 w-full">
         {/* gap */}

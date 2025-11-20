@@ -13,15 +13,15 @@ const Navlinks = [
   },
   {
     title: "Services",
-    src: "#",
+    src: "#services",
   },
   {
     title: "Doctors",
-    src: "#",
+    src: "#doctors",
   },
   {
     title: "Contact us",
-    src: "#",
+    src: "#contact",
   },
 ];
 

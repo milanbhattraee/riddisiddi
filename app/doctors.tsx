@@ -74,7 +74,7 @@ const Doctors = [
 
 const Doctor = () => {
   return (
-    <section className='layout-padding w-full bg-main flex justify-between  items-center flex-col'>
+    <section id="doctors" className='layout-padding w-full bg-main flex justify-between  items-center flex-col'>
 
         <h2 className="heading-xl pb-20">Our Doctors</h2>
         <div className='w-full '>

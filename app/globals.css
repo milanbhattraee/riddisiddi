@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html{
+  scroll-behavior: smooth;
+}
+
 /* Add your custom layout utilities */
 @layer utilities {
   /* Layout padding (responsive) */
