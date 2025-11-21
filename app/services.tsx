@@ -1,3 +1,6 @@
+import { Button } from "@radix-ui/themes";
+import Image from "next/image";
+import { useState } from "react";
 import { FaHands, FaSyringe } from "react-icons/fa6";
 import { MdElderlyWoman } from "react-icons/md";
 
@@ -6,33 +9,60 @@ const ServiceCards = [
     title: "Vaccinations",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
     icon: <FaSyringe className=" transition-all duration-300 ease-in-out  text-xl" />,
+    image : "/herobg.jpg",
   },
   {
     title: "Family care",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
     icon: <FaHands className=" transition-all duration-300 ease-in-out  text-xl" />,
+    image : "/herobg.jpg",
   },
   {
     title: "Vaccinations",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
     icon: <MdElderlyWoman className=" transition-all duration-300 ease-in-out  text-xl" />,
+    image : "/herobg.jpg",
+  },
+  {
+    title: "Vaccinations",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
+    icon: <FaSyringe className=" transition-all duration-300 ease-in-out  text-xl" />,
+    image : "/herobg.jpg",
+  },
+  {
+    title: "Family care",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
+    icon: <FaHands className=" transition-all duration-300 ease-in-out  text-xl" />,
+    image : "/herobg.jpg",
+  },
+  {
+    title: "Vaccinations",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magnam magni beatae!",
+    icon: <MdElderlyWoman className=" transition-all duration-300 ease-in-out  text-xl" />,
+    image : "/herobg.jpg",
   },
 ];
 
 const ServiceSection = () => {
+
+    const [show , setShow] = useState(false)
+
+  const visibleService = show ? ServiceCards : ServiceCards.slice(0, 3);
   return (
-    <section id="services" className="w-full bg-white layout-padding flex  items-center flex-col gap-20">
+    <section id="services" className="w-full bg-white layout-padding flex items-center flex-col gap-20">
       <h1 className="heading-xl font-bold">Our Services</h1>
 
       <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3 items-center justify-center gap-10 w-full">
-        {ServiceCards.map((card, index) => {
+        {visibleService.map((card, index) => {
           
 
           return (
+            <div className="w-full  " key={index}> 
+              <Image className="w-full aspect-square rounded-t-2xl" src={card.image} width={200} height={200} objectFit="cover" alt="services Image" />
             <div
               key={index}
-              className={`group relative transition-all borde duration-300 ease-in-out  max-w-80 p-8 rounded-2xl shadow-lg text-center 
-         ${index % 2 !== 0 ? "bg-blue-900 text-white ": "bg-gray-50  text-blue-900 border border-blue-50 "}   text-gray-800"`}
+              className={`group w-full relative transition-all borde duration-300 ease-in-out   p-8  shadow-lg text-center 
+         ${index % 2 !== 0 ? "bg-blue-900 text-white ": "bg-gray-50  text-blue-900 border border-blue-50 "}   rounded-b-2xl`}
             >
               <div
                 className="absolute -top-8 left-1/2 -translate-x-1/2
@@ -52,8 +82,20 @@ const ServiceSection = () => {
                 {card.desc}
               </p>
             </div>
+            </div>
           );
         })}
+      </div>
+        <div className="w-full flex justify-center items-center">
+        <Button
+          onClick={() => (setShow(!show))}
+          style={{
+            padding : "1.2rem 4rem"
+          }}
+        >
+          
+      {!show ? "View More ": "Show less"}
+        </Button>
       </div>
     </section>
   );

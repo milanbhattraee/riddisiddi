@@ -31,7 +31,7 @@ const Contact = () =>{
         {/* gap */}
             <div
               
-              className={`group w-full relative transition-all borde duration-300 ease-in-out   max-w-80 p-8 rounded-2xl shadow-lg text-center 
+              className={`group w-full relative transition-all borde duration-300 ease-in-out   p-8 rounded-2xl shadow-lg text-center 
           bg-gray-50  text-blue-900 border border-blue-50 `}
             >
               <div
@@ -58,7 +58,7 @@ const Contact = () =>{
             {/* gap */}
             <div
               
-              className={`group w-full relative transition-all borde duration-300 ease-in-out  max-w-80 p-8 rounded-2xl shadow-lg text-center 
+              className={`group w-full relative transition-all borde duration-300 ease-in-out  p-8 rounded-2xl shadow-lg text-center 
           bg-blue-900 text-white`}
             >
               <div
@@ -86,7 +86,7 @@ const Contact = () =>{
             {/* gap */}
             <div
               
-              className={`group w-full relative transition-all borde duration-300 ease-in-out  max-w-80 p-8 rounded-2xl shadow-lg text-center 
+              className={`group w-full relative transition-all borde duration-300 ease-in-out  p-8 rounded-2xl shadow-lg text-center 
           bg-gray-50  text-blue-900 border border-blue-50 `}
             >
               <div

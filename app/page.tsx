@@ -13,7 +13,6 @@ import { HiOutlineArrowUp } from "react-icons/hi";
 
 const HomePage = () => {
 
-    
 const [visibile , setvisible] = useState(false);
 
 useEffect(() => {
@@ -31,6 +30,7 @@ useEffect(() => {
       <Doctor />
       <Map />
       <Contact />
+      
         <div className={` ${visibile ? "flex fixed" : "hidden fixed"} animate-bounce z-40 fixed flex-col  text-center justify-center items-center bottom-10 right-5  text-white bg-sky-800  w-10 h-10 rounded-full`}>
         <Link className="w-full flex items-center justify-center flex-row text-2xl" href="#top"><HiOutlineArrowUp/> </Link>
       </div>

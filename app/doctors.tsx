@@ -1,85 +1,21 @@
 import { Button } from "@radix-ui/themes";
 import Image from "next/image";
-import { FaMap, FaMapMarkerAlt } from "react-icons/fa";
+import { useState } from "react";
+import {  FaMapMarkerAlt } from "react-icons/fa";
 import { FaUserDoctor } from "react-icons/fa6";
-
-const Doctors = [
-  {
-    image: "/herobg.jpg",
-    id: 1,
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "16+ Years Experience"
-    
-  },
-  {
-    image: "/herobg.jpg",
-    id: 2,
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "15 Years Experience"
-  },
-  {
-    image: "/herobg.jpg",
-    id: 3,
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "17 Years Experience"
-  },
-  {
-    image: "/herobg.jpg",
-    id: 4,
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "16+ Years Experience"
-  },
-  {
-    id: 5,
-      image: "/herobg.jpg",
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "14 Years Experience"
-  },
-  {
-    image: "/herobg.jpg",
-    id: 6,
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "18 Years Experience"
-  },
-  {
-    image: "/herobg.jpg",
-    id: 7,
-    name: "Dr. Samyukta Bista",
-    specialty: "Medical Retina",
-    qualification: "MD Ophthalmology (TU)",
-    location: "Kalanki",
-    experience: "16 Years Experience"
-  },
-  
-];
+import Doctors  from "@/app/constant/doctor.js"
 
 
 const Doctor = () => {
+    const [show , setShow ]  = useState(false)
+    const visibleItems = show?  Doctors :Doctors.slice(0,3)  ;
   return (
     <section id="doctors" className='layout-padding w-full bg-main flex justify-between  items-center flex-col'>
 
         <h2 className="heading-xl pb-20">Our Doctors</h2>
         <div className='w-full '>
             <div className="w-full  grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {Doctors.map((item)=>{
+                {visibleItems.map((item)=>{
                     return (
                       <div key={item.id} className=" justify-center hover:scale-101 cursor-pointer transition-all duration-300 ease-in-out items-center rounded-2xl shadow-2xl bg-white flex-col  gap-y-4">
                         <Image
@@ -117,6 +53,19 @@ const Doctor = () => {
                 })}
             </div>
         </div>
+        <div>
+        </div>
+            <div className="w-full mt-12 flex justify-center items-center ">
+        <Button
+          onClick={() => (setShow(!show))}
+          style={{
+            padding : "1.3rem 3rem"
+          }}
+        >
+          
+      {!show ? "View More ": "Show less"}
+        </Button>
+      </div>
     </section>
   )
 }

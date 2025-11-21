@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@radix-ui/themes": "^3.2.1",
+    "nepali-date-converter": "^3.4.0",
+    "nepali-datepicker-reactjs": "^1.1.9",
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",

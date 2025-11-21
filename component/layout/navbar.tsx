@@ -9,7 +9,7 @@ import { GrClose } from "react-icons/gr";
 const Navlinks = [
   {
     title: "Home",
-    src: "#",
+    src: "/",
   },
   {
     title: "Services",
@@ -73,9 +73,9 @@ const Navbar = () => {
           </Link>
         ))}
         </div>
-      
-          <Button style={{padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer"}}>Book an appointment</Button>
-        
+          <Link  href="/form">
+          <Button   style={{width: "250px", padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
+        </Link>
       </div>
 
       {/* for mobile  */}
@@ -92,7 +92,9 @@ const Navbar = () => {
             </Link>
           ))}
           <div className="flex items-center w-full  justify-center">
-            <Button style={{ width: "100%",padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
+            <Link href="/form">
+            <Button onClick={()=>{setShowLinks(false)}} style={{ width: "100%",padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
+            </Link>
           </div>
         </div>
       )}
