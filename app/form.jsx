@@ -2,34 +2,39 @@
 
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import { useState } from "react";
-
 import "nepali-datepicker-reactjs/dist/index.css"
 import  doctors  from "./constant/doctor.js";
-
-console.log(doctors)
-
-
-export default function AppointmentForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    phone: "",
-    email: "",
-    doctor: "",
-    date: "",
-    nepaliDate: "",
-
-    visitType: "",
-    labs: [],
-    message: "",
-    reports: null,
-    consent: false,
-  });
+import { Bounce, toast } from "react-toastify";
 
 
+// const DefaultFormData = {
+//     name: "",
+//     age: "",
+//     gender: "",
+//     phone: "",
+//     email: "",
+//     doctor: "",
+//     nepaliDate: "",
+//     visitType: "",
+//     labs: [],
+//     message: "",
+//     consent: false,
+//   }
+const DefaultFormData = {
+    name: "milan",
+    age: "12",
+    gender: "18",
+    phone: "988987",
+    email: "milanbhattarai0007@gmail.com",
+    doctor: "nilesh",
+    nepaliDate: "2342/234",
+    visitType: "first",
+    labs: ["lab1", "lab2"],
+    message: "asdlf",
+    consent: true,
+  }
 
-  const labFacilities = [
+const labFacilities = [
   // Diagnostic Services (सुविधाहरु)
   "औषधि (Pharmacy)",
   "प्याथोलोजी ल्याब (Pathology Lab)",
@@ -65,10 +70,14 @@ export default function AppointmentForm() {
   "रेविज (Rabies), टिटानस (Tetanus) र तिन महिने सुई (सरमिनि) साथै बाफ (Nebulizer) को सेवा"
 ];
 
-  const handleChange = (e) => {
-    let { name, value, type, checked, files } = e.target;
 
-   
+export default function AppointmentForm() {
+  const [formData, setFormData] = useState(DefaultFormData);
+
+
+  const handleChange = (e) => {
+    let { name, value, type, checked } = e.target;
+
 
     if (type === "checkbox" && name === "labs") {
       const updatedLabs = checked
@@ -79,11 +88,7 @@ export default function AppointmentForm() {
       return;
     }
 
-    if (type === "file") {
-      setFormData({ ...formData, reports: files[0] });
-      return;
-    }
-
+  
     if (name === "consent") {
       setFormData({ ...formData, consent: checked });
       return;
@@ -93,10 +98,73 @@ export default function AppointmentForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+
     e.preventDefault();
-    console.log("Form Data:", formData);
-    alert("Appointment Submitted Successfully!");
+    
+    try {
+
+      console.log(formData,"form data")
+
+      const response =  await fetch ("/api/appoinment",{
+        method : "POST",
+        headers : {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(
+          formData
+        )
+      })
+      const data = await response.json();
+      
+      console.log(data,"response from server"  )
+      if(response.ok){
+        toast.success(data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }else{
+        toast.error(data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
+    }catch(error){
+      console.error(error,"something went wrong");
+      toast.error("Something went wrong", {
+         position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+      });
+    }finally{
+      setFormData(DefaultFormData);
+    }
+
+    
+
+
+
+   
   };
 
   return (
@@ -120,6 +188,7 @@ export default function AppointmentForm() {
               placeholder="Full Name"
               onChange={handleChange}
               className="border p-3 rounded w-full"
+              value={formData.name}
               required
             />
 
@@ -128,6 +197,7 @@ export default function AppointmentForm() {
               name="age"
               placeholder="Age"
               onChange={handleChange}
+              value={formData.age}
               className="border p-3 rounded w-full"
               required
             />
@@ -139,6 +209,7 @@ export default function AppointmentForm() {
               onChange={handleChange}
               className="border p-3 rounded w-full"
               required
+              value={formData.gender}
             >
               <option value="">Select Gender</option>
               <option>Male</option>
@@ -151,6 +222,7 @@ export default function AppointmentForm() {
               name="phone"
               placeholder="Phone Number"
               onChange={handleChange}
+              value={formData.phone}
               className="border p-3 rounded w-full"
               required
             />
@@ -161,6 +233,7 @@ export default function AppointmentForm() {
             name="email"
             placeholder="Email Address"
             onChange={handleChange}
+            value={formData.email}
             className="border p-3 rounded w-full mt-4"
           />
         </div>
@@ -173,6 +246,7 @@ export default function AppointmentForm() {
             name="doctor"
             onChange={handleChange}
             className="border p-3 rounded w-full"
+            value={formData.doctor}
             
           >
             <option value="">Select Doctor</option>
@@ -188,8 +262,10 @@ export default function AppointmentForm() {
         <div>
           <h2 className="text-xl font-semibold mb-3">Appointment Details</h2>
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid  gap-4">
+            <label htmlFor="date">Date</label>
             <NepaliDatePicker
+              
               inputClassName="border p-3 rounded w-full"
               value={formData.nepaliDate}
               onChange={(value) =>
@@ -198,21 +274,15 @@ export default function AppointmentForm() {
               options={{ calenderLocale: "ne", valueLocale: "en" }}
               required
             />
+           
 
             
-            {/* <input
-              type="time"
-              name="time"
-              onChange={handleChange}
-              className="border p-3 rounded w-full"
-              required
-            /> */}
           </div>
-
-          <select
+             <select
             name="visitType"
             onChange={handleChange}
             className="border p-3 rounded w-full mt-4"
+            value={formData.visitType}
             required
           >
             <option value="">Visit Type</option>
@@ -220,6 +290,8 @@ export default function AppointmentForm() {
             <option>Follow-up</option>
             <option>Emergency</option>
           </select>
+
+         
         </div>
 
         {/* LAB FACILITIES */}
@@ -235,6 +307,7 @@ export default function AppointmentForm() {
                   name="labs"
                   value={lab}
                   onChange={handleChange}
+                  
                 />
                 <span>{lab}</span>
               </label>
@@ -244,25 +317,14 @@ export default function AppointmentForm() {
           </div>
         </div>
 
-        {/* FILE UPLOAD */}
-        <div>
-          <h2 className="text-xl font-semibold mb-3">
-            Upload Previous Reports
-          </h2>
-
-          <input
-            type="file"
-            name="reports"
-            onChange={handleChange}
-            className="border p-3 rounded w-full"
-          />
-        </div>
+       
 
         {/* MESSAGE BOX */}
         <textarea
           name="message"
           placeholder="Additional Message (Optional)"
           onChange={handleChange}
+          value={formData.message}
           className="border p-3 rounded w-full h-28"
         ></textarea>
 
@@ -272,6 +334,7 @@ export default function AppointmentForm() {
             type="checkbox"
             name="consent"
             onChange={handleChange}
+            checked={formData.consent}
             required
           />
           <label>

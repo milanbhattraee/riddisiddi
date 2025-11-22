@@ -5,6 +5,7 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import Navbar from "@/component/layout/navbar";
 import Footer from "@/component/layout/footer";
+import { Bounce, ToastContainer } from "react-toastify";
 
 export const inter = Inter({
   subsets: ["latin"],
@@ -24,11 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased `}>
-        <Theme>
-          <Navbar />
-          {children}
-          <Footer />
-        </Theme>
+         <ToastContainer position="top-right" transition={Bounce} draggable autoClose = {2000} theme="dark" />
+
+        
+          <Theme>
+            <Navbar />
+            {children}
+            <Footer />
+          </Theme>
+     
       </body>
     </html>
   );
