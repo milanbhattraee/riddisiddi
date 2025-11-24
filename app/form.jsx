@@ -104,7 +104,7 @@ export default function AppointmentForm() {
     
     try {
 
-      console.log(formData,"form data")
+
 
       const response =  await fetch ("/api/appoinment",{
         method : "POST",
@@ -116,8 +116,6 @@ export default function AppointmentForm() {
         )
       })
       const data = await response.json();
-      
-      console.log(data,"response from server"  )
       if(response.ok){
         toast.success(data.message, {
           position: "top-right",
@@ -245,13 +243,14 @@ export default function AppointmentForm() {
           <select
             name="doctor"
             onChange={handleChange}
+            
             className="border p-3 rounded w-full"
             value={formData.doctor}
             
           >
-            <option value="">Select Doctor</option>
+            <option >Select Doctor</option>
             {doctors.map((doc, idx) => (
-              <option key={idx} value={doc}>
+              <option key={idx} value={doc.name}>
                 {doc.name}
               </option>
             ))}
