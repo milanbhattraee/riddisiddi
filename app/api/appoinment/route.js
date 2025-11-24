@@ -19,8 +19,11 @@ export async function POST(req) {
     consent,
   } = await req.json();
 
+<<<<<<< HEAD
  
 
+=======
+>>>>>>> main
   try {
     
     if (
@@ -46,7 +49,10 @@ export async function POST(req) {
       );
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     const response = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
@@ -61,6 +67,7 @@ export async function POST(req) {
         },
         to: [{ email: ReceiverEmail, name: ReceiverName }],
         subject: `New Appointment from ${name}`,
+<<<<<<< HEAD
    htmlContent: `
 <div style="font-family:Arial, sans-serif; border:1px solid #ddd; border-radius:12px; max-width:500px; margin:auto; padding:20px; background:#fefefe; box-shadow:0 4px 12px rgba(0,0,0,0.1)">
 
@@ -104,6 +111,56 @@ export async function POST(req) {
 </div>
 `,
 
+=======
+        htmlContent: `
+<div style="font-family:Arial, sans-serif; border:1px solid #ddd; border-radius:12px; max-width:500px; margin:auto; padding:20px; background:#fefefe; box-shadow:0 4px 12px rgba(0,0,0,0.1)">
+
+  <!-- Heading -->
+  <h2 style="margin:0 0 20px; font-size:22px; color:white; background:linear-gradient(90deg,#4f46e5,#6366f1); padding:12px 15px; border-radius:8px; text-align:center; letter-spacing:1px">
+    Appointment Details
+  </h2>
+
+  <!-- Patient Info -->
+  <div style="margin-bottom:15px;">
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Name:</strong> ${name}</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Age:</strong> ${age} | <strong style="color:#4f46e5;">Gender:</strong> ${gender}</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Phone:</strong> ${phone}</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Email:</strong> ${
+      email || "N/A"
+    }</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Doctor:</strong> ${
+      doctor || "N/A"
+    }</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Date:</strong> ${nepaliDate}</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Visit Type:</strong> ${visitType}</p>
+  </div>
+
+  <!-- Labs -->
+  <div style="margin-bottom:15px;">
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Labs:</strong></p>
+    <ul style="padding-left:20px; margin:5px 0; color:#333;">
+      ${
+        Array.isArray(labs)
+          ? labs
+              .map((item) => `<li style="margin-bottom:4px;">${item}</li>`)
+              .join("")
+          : "<li>None</li>"
+      }
+    </ul>
+  </div>
+
+  <!-- Message and Consent -->
+  <div style="margin-bottom:15px;">
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Message:</strong> ${message}</p>
+    <p style="margin:5px 0;"><strong style="color:#4f46e5;">Consent:</strong> ${consent}</p>
+  </div>
+
+  <!-- Footer -->
+  <p style="font-size:12px; color:#888; text-align:center; margin-top:20px;">This is an automated email. Please do not reply.</p>
+
+</div>
+`,
+>>>>>>> main
       }),
     });
 
@@ -120,9 +177,6 @@ export async function POST(req) {
     );
   } catch (error) {
     console.error(error);
-    return Response.json(
-      { message: "Something went wrong!" },
-      { status: 500 }
-    );
+    return Response.json({ message: "Something went wrong!" }, { status: 500 });
   }
 }

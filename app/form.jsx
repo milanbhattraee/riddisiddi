@@ -1,38 +1,22 @@
 "use client";
-
-import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import { useState } from "react";
-import "nepali-datepicker-reactjs/dist/index.css"
-import  doctors  from "./constant/doctor.js";
+import doctors from "./constant/doctor.js";
 import { Bounce, toast } from "react-toastify";
+import NepaliDatePicker from "./datePicker.jsx";
 
-
-// const DefaultFormData = {
-//     name: "",
-//     age: "",
-//     gender: "",
-//     phone: "",
-//     email: "",
-//     doctor: "",
-//     nepaliDate: "",
-//     visitType: "",
-//     labs: [],
-//     message: "",
-//     consent: false,
-//   }
 const DefaultFormData = {
-    name: "milan",
-    age: "12",
-    gender: "18",
-    phone: "988987",
-    email: "milanbhattarai0007@gmail.com",
-    doctor: "nilesh",
-    nepaliDate: "2342/234",
-    visitType: "first",
-    labs: ["lab1", "lab2"],
-    message: "asdlf",
-    consent: true,
-  }
+  name: "",
+  age: "",
+  gender: "",
+  phone: "",
+  email: "",
+  doctor: "",
+  nepaliDate: "",
+  visitType: "",
+  labs: [],
+  message: "",
+  consent: false,
+};
 
 const labFacilities = [
   // Diagnostic Services (सुविधाहरु)
@@ -43,7 +27,7 @@ const labFacilities = [
   "पि.पि.सि ECHO (PPC ECHO)",
   "12-Lead ECG",
   "दिशा तथा रगत सम्बन्धिको जाँच (Sputum and Blood related checkup)",
-  
+
   // Routine Blood Tests (अन्य रगत जाँचहरु)
   "Blood Sugar",
   "RFT (Renal Function Test)",
@@ -52,7 +36,7 @@ const labFacilities = [
   "Lipid Profile",
   "Calcium",
   "Uric Acid",
-  
+
   // Specialized Panels and Markers
   "Diabetic Profile",
   "Fertility Panel (LH, FSH, Prolactin, B-HCG)",
@@ -65,19 +49,17 @@ const labFacilities = [
   "Rheumatology Panel (ANA, Anti-CCP, Ds DNA, ENA Profile)",
   "Metabolic Panel",
   "Cardiac Markers",
-  
-  // Vaccination/Treatment
-  "रेविज (Rabies), टिटानस (Tetanus) र तिन महिने सुई (सरमिनि) साथै बाफ (Nebulizer) को सेवा"
-];
 
+  // Vaccination/Treatment
+  "रेविज (Rabies), टिटानस (Tetanus) र तिन महिने सुई (सरमिनि) साथै बाफ (Nebulizer) को सेवा",
+];
 
 export default function AppointmentForm() {
   const [formData, setFormData] = useState(DefaultFormData);
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     let { name, value, type, checked } = e.target;
-
 
     if (type === "checkbox" && name === "labs") {
       const updatedLabs = checked
@@ -88,81 +70,63 @@ export default function AppointmentForm() {
       return;
     }
 
-  
     if (name === "consent") {
       setFormData({ ...formData, consent: checked });
       return;
     }
-    
 
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async(e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
+<<<<<<< HEAD
 
 
 
       const response =  await fetch ("/api/appoinment",{
         method : "POST",
         headers : {
+=======
+      setIsLoading(true);
+      const response = await fetch("/api/appoinment", {
+        method: "POST",
+        headers: {
+>>>>>>> main
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(
-          formData
-        )
-      })
+        body: JSON.stringify(formData),
+      });
+
       const data = await response.json();
+<<<<<<< HEAD
       if(response.ok){
+=======
+
+      if (response.ok) {
+>>>>>>> main
         toast.success(data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "light",
           transition: Bounce,
         });
-      }else{
+      } else {
         toast.error(data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "light",
           transition: Bounce,
         });
       }
-    }catch(error){
-      console.error(error,"something went wrong");
+    } catch (error) {
+      console.error(error, "something went wrong");
       toast.error("Something went wrong", {
-         position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
+        theme: "light",
+        transition: Bounce,
       });
-    }finally{
+    } finally {
       setFormData(DefaultFormData);
+      setIsLoading(false);
     }
-
-    
-
-
-
-   
   };
 
   return (
@@ -185,18 +149,19 @@ export default function AppointmentForm() {
               name="name"
               placeholder="Full Name"
               onChange={handleChange}
-              className="border p-3 rounded w-full"
+              className="border border-gray-400 outline-indigo-400 p-3 rounded w-full"
               value={formData.name}
               required
             />
 
             <input
+              min={0}
               type="number"
               name="age"
               placeholder="Age"
               onChange={handleChange}
               value={formData.age}
-              className="border p-3 rounded w-full"
+              className="border border-gray-400 outline-indigo-400 p-3 rounded w-full"
               required
             />
           </div>
@@ -205,7 +170,7 @@ export default function AppointmentForm() {
             <select
               name="gender"
               onChange={handleChange}
-              className="border p-3 rounded w-full"
+              className="border border-gray-400 outline-indigo-400 p-3 rounded w-full"
               required
               value={formData.gender}
             >
@@ -221,7 +186,7 @@ export default function AppointmentForm() {
               placeholder="Phone Number"
               onChange={handleChange}
               value={formData.phone}
-              className="border p-3 rounded w-full"
+              className="border border-gray-400 outline-indigo-400 p-3 rounded w-full"
               required
             />
           </div>
@@ -232,7 +197,7 @@ export default function AppointmentForm() {
             placeholder="Email Address"
             onChange={handleChange}
             value={formData.email}
-            className="border p-3 rounded w-full mt-4"
+            className="border border-gray-400 outline-indigo-400 p-3 rounded w-full mt-4"
           />
         </div>
 
@@ -243,10 +208,13 @@ export default function AppointmentForm() {
           <select
             name="doctor"
             onChange={handleChange}
+<<<<<<< HEAD
             
             className="border p-3 rounded w-full"
+=======
+            className="border border-gray-400 outline-indigo-400 p-3 rounded w-full"
+>>>>>>> main
             value={formData.doctor}
-            
           >
             <option >Select Doctor</option>
             {doctors.map((doc, idx) => (
@@ -262,25 +230,16 @@ export default function AppointmentForm() {
           <h2 className="text-xl font-semibold mb-3">Appointment Details</h2>
 
           <div className="grid  gap-4">
-            <label htmlFor="date">Date</label>
             <NepaliDatePicker
-              
-              inputClassName="border p-3 rounded w-full"
-              value={formData.nepaliDate}
-              onChange={(value) =>
-                setFormData({ ...formData, nepaliDate: value })
-              }
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-              required
+              handleChange={handleChange}
+              formData={formData}
+              setFormData={setFormData}
             />
-           
-
-            
           </div>
-             <select
+          <select
             name="visitType"
             onChange={handleChange}
-            className="border p-3 rounded w-full mt-4"
+            className="border border-gray-400 outline-indigo-400 p-3 rounded w-full mt-4"
             value={formData.visitType}
             required
           >
@@ -289,34 +248,29 @@ export default function AppointmentForm() {
             <option>Follow-up</option>
             <option>Emergency</option>
           </select>
-
-         
         </div>
 
         {/* LAB FACILITIES */}
         <div>
           <h2 className="text-xl font-semibold mb-3">Lab Facilities</h2>
-            <div className="overflow-y-scroll h-[400px]">
-          <div className="grid grid-cols-2 sm:grid-cols-3  rounded-2xl   gap-2">
-            {labFacilities.map((lab, idx) => (
-                <div key={idx} className="bg-indigo-50 p-4 rounded-md">  
-              <label key={idx} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  name="labs"
-                  value={lab}
-                  onChange={handleChange}
-                  
-                />
-                <span>{lab}</span>
-              </label>
-              </div>
-            ))}
-          </div>
+          <div className="overflow-y-scroll h-[400px]">
+            <div className="grid grid-cols-2 sm:grid-cols-3  rounded-2xl   gap-2">
+              {labFacilities.map((lab, idx) => (
+                <div key={idx} className="bg-indigo-50 p-4 rounded-md">
+                  <label key={idx} className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      name="labs"
+                      value={lab}
+                      onChange={handleChange}
+                    />
+                    <span>{lab}</span>
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-
-       
 
         {/* MESSAGE BOX */}
         <textarea
@@ -324,7 +278,7 @@ export default function AppointmentForm() {
           placeholder="Additional Message (Optional)"
           onChange={handleChange}
           value={formData.message}
-          className="border p-3 rounded w-full h-28"
+          className="border border-gray-400 outline-indigo-400 p-3 rounded w-full h-28"
         ></textarea>
 
         {/* CONSENT */}
@@ -342,12 +296,41 @@ export default function AppointmentForm() {
         </div>
 
         {/* SUBMIT BUTTON */}
-        <button
-          type="submit"
-          className="bg-blue-600 text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
-        >
-          Submit Appointment
-        </button>
+        {!isLoading ? (
+          <button
+            type="submit"
+            className="bg-blue-600 text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+          >
+            Submit Appointment
+          </button>
+        ) : (
+          <button
+            disabled
+            className="bg-blue-600 flex items-center gap-2 justify-center text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+          >
+            <svg
+              className="w-5 h-5 text-white animate-spin"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+              ></path>
+            </svg>
+            Please Wait...
+          </button>
+        )}
       </form>
     </div>
   );
