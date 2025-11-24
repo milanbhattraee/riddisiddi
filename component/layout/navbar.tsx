@@ -34,6 +34,8 @@ const Navbar = () => {
       } shadow-lg bg-gray-100  z-50 layout-padding-x items-start md:items-center sticky top-0  w-full  gap-y-5 flex  `}
     >
       <div className={` flex w-full md:w-auto  items-center  justify-between`}>
+        <Link href="/">
+          
         <Image
           className="w-20"
           src="/logo.png"
@@ -41,6 +43,7 @@ const Navbar = () => {
           height={44}
           alt="Logo"
         />
+        </Link>
 
         {!showLinks ? (
           <GiHamburgerMenu

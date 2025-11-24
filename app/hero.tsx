@@ -1,4 +1,5 @@
 import { Button } from "@radix-ui/themes";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -37,7 +38,7 @@ const HeroSection = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
             magnam magni beatae! Lorem ipsum dolor sit amet.
           </p>
-
+          <Link href="/form">
           <Button
             className="w-3/5"
             style={{
@@ -47,6 +48,7 @@ const HeroSection = () => {
           >
             Book an appointment
           </Button>
+          </Link>
         </div>
       </div>
     </section>
