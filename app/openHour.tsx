@@ -5,7 +5,7 @@ import { IoMdTime } from 'react-icons/io';
 
 function OpenHour() {
   return (
-    <section className='layout- gap-y-16 flex  justify-center flex-col items-center bg-main w-full'>
+    <section className='py-20 gap-y-16 flex  justify-center flex-col items-center bg-main w-full'>
       <h2 className='heading-xl '>Opening Hours</h2>
       <div className=' w-full flex gap-8  justify-around items-center '>
         <Image className= 'w-1/2 hidden md:block h-auto' src="/herobg.jpg" width={200} height={200} alt="doctor image" />

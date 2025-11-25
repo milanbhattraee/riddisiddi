@@ -90,7 +90,7 @@ const ServiceSection = () => {
         <Button
           onClick={() => (setShow(!show))}
           style={{
-            padding : "1.2rem 4rem"
+            padding : "1.7rem 6rem"
           }}
         >
           

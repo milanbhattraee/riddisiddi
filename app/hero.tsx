@@ -42,8 +42,7 @@ const HeroSection = () => {
           <Button
             className="w-3/5"
             style={{
-              height: "3rem",
-              fontSize: "1rem",
+              padding : "1.7rem 6rem"
             }}
           >
             Book an appointment

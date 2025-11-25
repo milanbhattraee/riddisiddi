@@ -38,7 +38,7 @@ const Navbar = () => {
           
         <Image
           className="w-60"
-          src="/logo.jpg"
+          src="/logo.png"
           width={400}
           height={400}
           alt="Logo"
@@ -77,7 +77,7 @@ const Navbar = () => {
         ))}
         </div>
           <Link  href="/form">
-          <Button   style={{width: "250px", padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
+          <Button   style={{width: "250px", padding : "1.7rem 1rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
         </Link>
       </div>
 
@@ -96,7 +96,7 @@ const Navbar = () => {
           ))}
           <div className="flex items-center w-full  justify-center">
             <Link href="/form">
-            <Button onClick={()=>{setShowLinks(false)}} style={{ width: "100%",padding: "1.3rem 2rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
+            <Button onClick={()=>{setShowLinks(false)}} style={{ width: "100%",padding : "1.7rem 3rem",fontSize: '1rem', cursor: "pointer" }}>Book an appointment</Button>
             </Link>
           </div>
         </div>

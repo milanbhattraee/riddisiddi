@@ -41,7 +41,7 @@ const Doctor = () => {
                         
                         <Button style={
                             {
-                                padding : "1.3rem 3rem", width : "100%"
+                                padding : "1.7rem 6rem", width : "100%"
                             }
                         }><FaUserDoctor className="text-white"/>View Profile</Button>
 
@@ -59,7 +59,7 @@ const Doctor = () => {
         <Button
           onClick={() => (setShow(!show))}
           style={{
-            padding : "1.3rem 3rem"
+            padding : "1.7rem 6rem"
           }}
         >
           
