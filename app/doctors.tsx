@@ -13,11 +13,11 @@ const Doctor = () => {
     <section id="doctors" className='layout-padding w-full bg-main flex justify-between  items-center flex-col'>
 
         <h2 className="heading-xl pb-20">Our Doctors</h2>
-        <div className='w-full '>
+        <div className='w-full  '>
             <div className="w-full  grid grid-cols-1  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {visibleItems.map((item)=>{
                     return (
-                      <div key={item.id} className=" justify-center hover:scale-101 cursor-pointer transition-all duration-300 ease-in-out items-center rounded-2xl shadow-2xl bg-white flex-col  gap-y-4">
+                      <div key={item.id} className=" w-full  justify-center  hover:scale-101 cursor-pointer transition-all duration-300 ease-in-out items-center rounded-2xl shadow-2xl bg-white  flex-col  gap-y-8">
                         <Image
                           className=" w-full h-60 rounded-t-2xl "
                           src={item.image}
@@ -26,7 +26,7 @@ const Doctor = () => {
                           objectFit="cover"
                           alt="doctor image"
                         />
-                      <div className="flex flex-col  justify-center  items-start p-8   gap-4">
+                      <div className="flex flex-col    items-start  p-8    gap-4">
                         <h3 className="text-lg md:text-xl  font-bold">{item.name}</h3>
                         <p className="text-lg md:text-lg text-gray-600 font-semibold">{item.specialty}</p>
                         <p className="bg-sky-100 px-5 py-2 rounded-full text-sm font-bold text-blue-800">{item.qualification}</p>

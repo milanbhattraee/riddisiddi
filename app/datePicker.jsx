@@ -227,7 +227,7 @@ const NepaliDatePicker = ({ handleChange, formData, setFormData }) => {
                 ? "text-gray-300 cursor-not-allowed bg-gray-50"
                 : "text-gray-700 hover:bg-blue-50 hover:text-blue-600 cursor-pointer"
             }
-            ${isSelected ? "bg-blue-600 text-white hover:bg-blue-700" : ""}
+            ${isSelected ? "bg-primary text-white hover:bg-blue-700" : ""}
             ${isToday && !isSelected ? "ring-2 ring-blue-400" : ""}
           `}
         >
@@ -319,7 +319,7 @@ const NepaliDatePicker = ({ handleChange, formData, setFormData }) => {
                   setCurrentNepaliMonth(todayNepali.month);
                   handleDateSelect(todayNepali.day);
                 }}
-                className="w-full mt-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="w-full mt-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
               >
                 आज
               </button>

@@ -82,31 +82,19 @@ export default function AppointmentForm() {
     e.preventDefault();
 
     try {
-<<<<<<< HEAD
 
 
 
       const response =  await fetch ("/api/appoinment",{
         method : "POST",
         headers : {
-=======
-      setIsLoading(true);
-      const response = await fetch("/api/appoinment", {
-        method: "POST",
-        headers: {
->>>>>>> main
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
-<<<<<<< HEAD
       if(response.ok){
-=======
-
-      if (response.ok) {
->>>>>>> main
         toast.success(data.message, {
           theme: "light",
           transition: Bounce,
@@ -208,12 +196,7 @@ export default function AppointmentForm() {
           <select
             name="doctor"
             onChange={handleChange}
-<<<<<<< HEAD
-            
-            className="border p-3 rounded w-full"
-=======
             className="border border-gray-400 outline-indigo-400 p-3 rounded w-full"
->>>>>>> main
             value={formData.doctor}
           >
             <option >Select Doctor</option>
@@ -299,14 +282,14 @@ export default function AppointmentForm() {
         {!isLoading ? (
           <button
             type="submit"
-            className="bg-blue-600 text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+            className="bg-primary text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
           >
             Submit Appointment
           </button>
         ) : (
           <button
             disabled
-            className="bg-blue-600 flex items-center gap-2 justify-center text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
+            className="bg-primary flex items-center gap-2 justify-center text-white w-full py-3 rounded-lg text-lg hover:bg-blue-700 transition"
           >
             <svg
               className="w-5 h-5 text-white animate-spin"

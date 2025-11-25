@@ -49,7 +49,7 @@ const ServiceSection = () => {
 
   const visibleService = show ? ServiceCards : ServiceCards.slice(0, 3);
   return (
-    <section id="services" className="w-full bg-white layout-padding flex items-center flex-col gap-20">
+    <section id="services" className="w-full bg-white layout-padding flex  items-center flex-col gap-20">
       <h1 className="heading-xl font-bold">Our Services</h1>
 
       <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3 items-center justify-center gap-10 w-full">
@@ -58,11 +58,11 @@ const ServiceSection = () => {
 
           return (
             <div className="w-full  " key={index}> 
-              <Image className="w-full aspect-square rounded-t-2xl" src={card.image} width={200} height={200} objectFit="cover" alt="services Image" />
+              <Image className="w-full  rounded-t-2xl" src={card.image} width={200} height={200} objectFit="cover" alt="services Image" />
             <div
               key={index}
               className={`group w-full relative transition-all borde duration-300 ease-in-out   p-8  shadow-lg text-center 
-         ${index % 2 !== 0 ? "bg-blue-900 text-white ": "bg-gray-50  text-blue-900 border border-blue-50 "}   rounded-b-2xl`}
+         ${index % 2 !== 0 ? "bg-primary text-white ": "bg-gray-50  text-blue-900 border border-blue-50 "}   rounded-b-2xl`}
             >
               <div
                 className="absolute -top-8 left-1/2 -translate-x-1/2
@@ -71,7 +71,7 @@ const ServiceSection = () => {
               >
                 <div
                   className={`flex items-center justify-center 
-                w-16 h-16 rounded-full ${index % 2 !== 0 ? "bg-blue-900 text-white ": "bg-blue-200  text-blue-900"} transition-all duration-300 ease-in-out   }`}
+                w-16 h-16 rounded-full ${index % 2 !== 0 ? "bg-primary text-white ": "bg-blue-200  text-blue-900"} transition-all duration-300 ease-in-out   }`}
                 >
                   {card.icon}
                 </div>

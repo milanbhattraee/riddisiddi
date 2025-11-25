@@ -1,25 +1,6 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-const ContactCards =  [
-  {
-    id: 1,
-    title: "address",
-    item1: "Medical Center Address",
-    item2: "123 Health Street, Cityville"
-  },
-  {
-    id: 2,
-    title: "Email",
-    item1: "123@gmail.com"
-   
-  },
-  {
-    id: 3,
-    title: "phone",
-    item1: "Medical Center Contact",
-    item2: "+1 555-123-4567"
-  }
-];
+
 
 const Contact = () =>{
     return (
@@ -27,12 +8,12 @@ const Contact = () =>{
 <section id="contact" className="w-full bg-white layout-padding flex  items-center flex-col gap-20">
       <h1 className="heading-xl font-bold">Contact Us</h1>
 
-      <div className=" grid grid-cols-1 sm:grid-cols-2 place-items-center md:grid-cols-3  items-center justify-center gap-10 w-full">
+      <div className=" grid grid-cols-1  sm:grid-cols-2 place-items-center md:grid-cols-3  items-center justify-center gap-10 w-full">
         {/* gap */}
             <div
               
-              className={`group w-full relative transition-all borde duration-300 ease-in-out   p-8 rounded-2xl shadow-lg text-center 
-          bg-gray-50  text-blue-900 border border-blue-50 `}
+              className={`group w-full  justify-center relative transition-all borde duration-300 ease-in-out   p-8 rounded-2xl shadow-lg text-center 
+          bg-indigo-50  text-blue-900 border border-gray-200 `}
             >
               <div
                 className="absolute -top-8 left-1/2 -translate-x-1/2
@@ -59,7 +40,7 @@ const Contact = () =>{
             <div
               
               className={`group w-full relative transition-all borde duration-300 ease-in-out  p-8 rounded-2xl shadow-lg text-center 
-          bg-blue-900 text-white`}
+          bg-primary text-white`}
             >
               <div
                 className="absolute -top-8 left-1/2 -translate-x-1/2
@@ -68,7 +49,7 @@ const Contact = () =>{
               >
                 <div
                   className={`flex items-center justify-center 
-                w-16 h-16 rounded-full bg-blue-900 text-white  transition-all duration-300 ease-in-out `}
+                w-16 h-16 rounded-full bg-primary text-white  transition-all duration-300 ease-in-out `}
                 >
                   <FaMapMarkerAlt /> 
                 </div>
@@ -87,7 +68,7 @@ const Contact = () =>{
             <div
               
               className={`group w-full relative transition-all borde duration-300 ease-in-out  p-8 rounded-2xl shadow-lg text-center 
-          bg-gray-50  text-blue-900 border border-blue-50 `}
+          bg-indigo-50  text-blue-900 border border-gray-200 `}
             >
               <div
                 className="absolute -top-8 left-1/2 -translate-x-1/2

@@ -37,10 +37,10 @@ const Navbar = () => {
         <Link href="/">
           
         <Image
-          className="w-20"
-          src="/logo.png"
-          width={44}
-          height={44}
+          className="w-60"
+          src="/logo.jpg"
+          width={400}
+          height={400}
           alt="Logo"
         />
         </Link>
